@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
+/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:49:33 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/21 07:05:35 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/10/21 12:17:15 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	ft_child(t_pipex *pipex,char **argv, char **envp)
 {	
-	int i = 0;
+	//int i = 0;
 	pipex->cmd = ft_split(argv[2], ' '); //malloc!
-	while (pipex->cmd[i])
+	/*while (pipex->cmd[i])
 	{
 		printf("cmd %d = %s\n", i, pipex->cmd[i]);
 		i++;
-	}
+	}*/
 	dup2(pipex->fd[1], STDOUT_FILENO);
 	dup2(pipex->filein, STDIN_FILENO);
 	close(pipex->fd[0]);
@@ -78,7 +78,7 @@ int main(int argc, char **argv, char **envp)
 	close(pipex.fd[0]);
 	close(pipex.fd[1]);
 	waitpid(pipex.pid2, NULL, 0);
-	free_finish(&pipex);
+	//free_finish(&pipex);
 	printf("SUCCES!\n");
 	return(0);
 }

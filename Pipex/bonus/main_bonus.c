@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
+/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 06:32:27 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/21 07:18:41 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/10/21 12:31:16 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,16 @@ int pipex_main(int argc, char **argv, char **envp)
 
 int		main(int argc, char **argv, char **envp)
 {
-	t_pipex		*pipex;
-	t_pipexb	*bonus;
+	t_pipexb	*pb;
 
 	if (argc < 5)
 		ft_close_err("TOO FEW ARGUMENT\n");
-	if (check_arg(argv[1], &bonus) == 0)
+	if ((check_arg(argv[1], &pb) == 0) && argc == 5)
 		pipex_main(argc, argv, envp);
-	if (check_arg(argv[1], &bonus) == 1)
-		
-		
-
-	
-
+	if (check_arg(argv[1], &pb) == 1)
+		{
+			
+		}
 
 	return (0);
 }

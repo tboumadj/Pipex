@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
+/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:23:50 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/21 06:34:35 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/10/21 11:40:40 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

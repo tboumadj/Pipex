@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
+/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 19:39:54 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/16 01:59:58 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/10/21 11:40:52 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

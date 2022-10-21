@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+         #
+#    By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 17:26:41 by tboumadj          #+#    #+#              #
-#    Updated: 2022/10/14 19:40:46 by tboumadj@student ###   ########.fr        #
+#    Updated: 2022/10/21 12:08:58 by tboumadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
