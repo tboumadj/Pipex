@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+         #
+#    By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/26 11:42:31 by tboumadj          #+#    #+#              #
-#    Updated: 2022/09/29 17:36:05 by tboumadj         ###   ########.fr        #
+#    Updated: 2022/10/21 06:54:20 by tboumadj@student ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ SRCS 		= ft_substr.c \
 			ft_strjoin.c \
 			ft_split.c \
 			ft_strdup.c \
-			ft_strlen.c
+			ft_strlen.c \
+			ft_strncmp.c
 
 
 OBJS	= $(SRCS:%.c=%.o)

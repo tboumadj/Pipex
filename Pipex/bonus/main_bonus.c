@@ -1,56 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 16:49:33 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/21 07:05:35 by tboumadj@student ###   ########.fr       */
+/*   Created: 2022/10/21 06:32:27 by tboumadj@student  #+#    #+#             */
+/*   Updated: 2022/10/21 07:18:41 by tboumadj@student ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
-void	ft_child(t_pipex *pipex,char **argv, char **envp)
-{	
-	int i = 0;
-	pipex->cmd = ft_split(argv[2], ' '); //malloc!
-	while (pipex->cmd[i])
-	{
-		printf("cmd %d = %s\n", i, pipex->cmd[i]);
-		i++;
-	}
-	dup2(pipex->fd[1], STDOUT_FILENO);
-	dup2(pipex->filein, STDIN_FILENO);
-	close(pipex->fd[0]);
-	pipex->cmd_path = get_path(pipex, pipex->cmd[0], envp);
-	if (!pipex->cmd_path)
-	{
-		free_process(pipex->cmd);
-		ft_close_err("ERROR\n");
-	}
-	execve(pipex->cmd_path, pipex->cmd, envp);
-	//verifier avec if si commande possible sinon BUG
-}
-
-void	ft_parent(t_pipex *pipex, char **argv, char **envp)
-{
-	pipex->cmd = ft_split(argv[3], ' ');
-	dup2(pipex->fd[0], STDIN_FILENO);
-	dup2(pipex->fileout, STDOUT_FILENO);
-	close(pipex->fd[1]);
-	pipex->cmd_path = get_path(pipex, pipex->cmd[0], envp);
-	if (!pipex->cmd_path)
-	{
-		free_process(pipex->cmd);
-		ft_close_err("ERROR\n");
-	}
-	execve(pipex->cmd_path, pipex->cmd, envp);
-	//verifier avec if si commande possible sinon BUG
-}
-
-int main(int argc, char **argv, char **envp)
+int pipex_main(int argc, char **argv, char **envp)
 {
 	t_pipex	pipex;
 
@@ -81,4 +43,23 @@ int main(int argc, char **argv, char **envp)
 	free_finish(&pipex);
 	printf("SUCCES!\n");
 	return(0);
+}
+
+int		main(int argc, char **argv, char **envp)
+{
+	t_pipex		*pipex;
+	t_pipexb	*bonus;
+
+	if (argc < 5)
+		ft_close_err("TOO FEW ARGUMENT\n");
+	if (check_arg(argv[1], &bonus) == 0)
+		pipex_main(argc, argv, envp);
+	if (check_arg(argv[1], &bonus) == 1)
+		
+		
+
+	
+
+
+	return (0);
 }

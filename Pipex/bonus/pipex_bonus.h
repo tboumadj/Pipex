@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 17:23:50 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/21 06:34:35 by tboumadj@student ###   ########.fr       */
+/*   Created: 2022/10/21 06:33:01 by tboumadj@student  #+#    #+#             */
+/*   Updated: 2022/10/21 07:09:31 by tboumadj@student ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef		PIPEX_H
-# define	PIPEX_H
+#ifndef		PIPEX_BONUS_H
+# define	PIPEX_BONUS_H
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -21,33 +21,22 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include "../libft/libft.h"
+# include "../srcs/pipex.h"
 
-typedef struct s_pipex
+typedef struct s_pipexb
 {
     int		fd[2];
 	int		filein;
 	int		fileout;
+    int		hd_count;
 	char	**cmd;
 	char	*cmd_path;
 	char	**paths;
 	pid_t	pid1;
 	pid_t	pid2;
-}		t_pipex;
+}		t_pipexb;
 
-//--------------CLOSE---------------//
-void	ft_close_err(char *str);
-void	free_process(char **tmp);
-void	free_finish(t_pipex *pipex);
-
-//-------------PROCESS-------------//
-void	ft_child(t_pipex *pipex, char **argv, char **envp);
-void	ft_parent(t_pipex *pipex, char **argv, char **envp);
-
-//-------------UTILS------------------//
-//char    *get_path(t_pipex *pipex, char *cmd, char **envp);
-//char	*get_cmd(char **paths, char *cmd);
-void    *get_path(t_pipex *pipex, char *cmd, char **envp);
-void	*get_cmd(t_pipex *pipex, char *cmd);
-
+int		pipex_main(int argc, char **argv, char **envp);
+int		check_arg(char *argv1, t_pipexb *bonus);
 
 #endif
