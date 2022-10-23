@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 06:32:27 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/23 18:16:22 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/23 19:07:03 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		main(int argc, char **argv, char **envp)
 		{
 			if (pb.hd_count > 0)
 				{
-					here_doc();
+					here_doc(&pb, argv[2]);
 					//pipex avc heredoc
 				}
 			else

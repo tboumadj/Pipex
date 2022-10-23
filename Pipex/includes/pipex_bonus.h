@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 06:33:01 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/23 17:53:11 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/23 19:07:00 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/wait.h>
+# include <stdarg.h>
 # include "../libft/libft.h"
 
 typedef struct s_pipex
@@ -59,6 +60,6 @@ void	free_finish(t_pipex *pipex);
 
 //-----------------------------------//
 int		check_arg(char *argv1, t_pipexb *bonus);
-void	here_doc(void);
+void	here_doc(t_pipexb *pb, char *cmd);
 
 #endif
