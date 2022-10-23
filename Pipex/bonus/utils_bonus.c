@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:07:37 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/23 19:11:55 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/23 20:05:53 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	here_doc(t_pipexb *pb, char *cmd)
 		}
 		ft_putstr_fd(tmp, pb->fd[1]);
 		free(tmp);
-		//tmp = 0;
+		tmp = 0;
 	}
 	return ;
 }
