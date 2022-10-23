@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
+/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:07:37 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/22 22:07:10 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/10/23 18:13:57 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "../includes/pipex_bonus.h"
 
-void	here_doc(t_pipexb *pb)
+void	here_doc(void)
 {
 	while(1)
 	{
@@ -23,7 +23,7 @@ void	here_doc(t_pipexb *pb)
 
 int		check_arg(char *argv1, t_pipexb *bonus)
 {
-	if(argv1 && (ft_strncmp("here_doc", argv1, 8) == 0))
+	if (argv1 && (ft_strncmp(argv1, "here_doc", 9) == 0))
 	{
 		bonus->hd_count = 1;
 		return(1);

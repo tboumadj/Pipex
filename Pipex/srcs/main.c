@@ -6,11 +6,11 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:49:33 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/21 12:17:15 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/23 17:28:45 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 void	ft_child(t_pipex *pipex,char **argv, char **envp)
 {	

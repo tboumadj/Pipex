@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
+/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 06:32:27 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/22 22:06:58 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/10/23 18:16:22 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "../includes/pipex_bonus.h"
 
 int pipex_main(int argc, char **argv, char **envp)
 {
@@ -40,24 +40,24 @@ int pipex_main(int argc, char **argv, char **envp)
 	close(pipex.fd[0]);
 	close(pipex.fd[1]);
 	waitpid(pipex.pid2, NULL, 0);
-	free_finish(&pipex);
+	//free_finish(&pipex);
 	printf("SUCCES!\n");
 	return(0);
 }
 
 int		main(int argc, char **argv, char **envp)
 {
-	t_pipexb	*pb;
+	t_pipexb	pb;
 
 	if (argc < 5)
 		ft_close_err("TOO FEW ARGUMENT\n");
 	if ((check_arg(argv[1], &pb) == 0) && argc == 5)
 		pipex_main(argc, argv, envp);
-	if (check_arg(argv[1], &pb) == 1)
+	else
 		{
-			if (pb->hd_count > 0)
+			if (pb.hd_count > 0)
 				{
-					here_doc(pb);
+					here_doc();
 					//pipex avc heredoc
 				}
 			else

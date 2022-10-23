@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close.c                                            :+:      :+:    :+:   */
+/*   close_pipex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 03:15:56 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/23 17:36:01 by tboumadj         ###   ########.fr       */
+/*   Created: 2022/10/23 17:33:17 by tboumadj          #+#    #+#             */
+/*   Updated: 2022/10/23 17:34:11 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipex.h"
+# include "../includes/pipex_bonus.h"
 
 void	ft_close_err(char *str)
 {
