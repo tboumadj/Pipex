@@ -3,29 +3,38 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+         #
+#    By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 17:26:41 by tboumadj          #+#    #+#              #
-#    Updated: 2022/10/21 12:08:58 by tboumadj         ###   ########.fr        #
+#    Updated: 2022/10/22 22:59:59 by tboumadj@student ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =   Pipex
+#FLAG
+NAME 	=   Pipex
+CC 		=   gcc
+FLAGS 	=   -Wall -Wextra -Werror -g
+RM 		=   rm -f
+CHECK = -fsanitize=address
+
+#PATH
+HEADER =   includes/pipex.h includes/pipex_bonus.h 
 LIBFT =  libft/libft.a
+
 SRCS =   srcs/main.c \
 		srcs/close.c \
 		srcs/utils.c
-
-CC =   gcc
-FLAGS =   -Wall -Wextra -Werror -g
-RM =   rm -f
-HEADER =   srcs/pipex.h
 OBJS = $(SRCS:.c=.o)
-CHECK = -fsanitize=address
-# Couleurs
+
+SRCS_BONUS = bonus/main_bonus.c \
+			bonus/utils_bonus.c 
+OBJS_S = $(SRCS_BONUS:.c=.o)
+
+#COULEURS
 _RED    =   $'\x1b[31m
 _GREEN  =   $'\x1b[32m
 
+##
 .c.o:
 	$(CC) $(FLAGS) -I$(HEADER) -c $< -o $(<:c=o)
 	
@@ -34,6 +43,13 @@ $(NAME): $(OBJS)
 		$(MAKE) -C libft/
 	 	$(CC) $(FLAGS) $(OBJS) libft/libft.a -o $(NAME) $(CHECK)
 		@echo "$(_RED)Compilation de Pipex en cours...$(_END)"
+		@echo "$(_GREEN)$(_BOLD)Fin de la compilation!$(_END)"
+
+bonus :  $(OBJS_S)
+		@echo "$(_RED)Compilation libft.a en cours...$(_END)"
+		$(MAKE) -C libft/
+	 	$(CC) $(FLAGS) $(OBJS_S) libft/libft.a -o $(NAME) $(CHECK)
+		@echo "$(_RED)Compilation de Bonus - Pipex en cours...$(_END)"
 		@echo "$(_GREEN)$(_BOLD)Fin de la compilation!$(_END)"
 
 .SILENT : $(OBJS) $(NAME)

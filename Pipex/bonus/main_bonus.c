@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 06:32:27 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/21 12:31:16 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/22 22:06:58 by tboumadj@student ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,16 @@ int		main(int argc, char **argv, char **envp)
 		pipex_main(argc, argv, envp);
 	if (check_arg(argv[1], &pb) == 1)
 		{
-			
+			if (pb->hd_count > 0)
+				{
+					here_doc(pb);
+					//pipex avc heredoc
+				}
+			else
+				{
+					printf("MULT CMD\n");
+					//pipex avc plusier cmd
+				} 
 		}
 
 	return (0);

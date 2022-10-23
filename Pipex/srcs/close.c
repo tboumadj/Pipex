@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 03:15:56 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/21 12:17:32 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/21 16:49:36 by tboumadj@student ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	free_process(char **tmp)
 
 void	free_finish(t_pipex *pipex)
 {
-	int	i;
+	//int	i;
 
 	//i = -1;
-	i = 0;
+	//i = 0;
 
 	printf("cmd= %c\n", pipex->cmd_path[0]);
 	/*while (pipex->cmd[++i])
