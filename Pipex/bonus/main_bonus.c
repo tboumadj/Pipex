@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 06:32:27 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/23 19:07:03 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/24 17:08:37 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ int pipex_main(int argc, char **argv, char **envp)
 int		main(int argc, char **argv, char **envp)
 {
 	t_pipexb	pb;
+	int 		i;
 
+	i = 2;
 	if (argc < 5)
 		ft_close_err("TOO FEW ARGUMENT\n");
 	if ((check_arg(argv[1], &pb) == 0) && argc == 5)
@@ -56,16 +58,20 @@ int		main(int argc, char **argv, char **envp)
 	else
 		{
 			if (pb.hd_count > 0)
-				{
-					here_doc(&pb, argv[2]);
-					//pipex avc heredoc
-				}
+			{
+				road_hd(&pb, argv[2], envp);
+				pb.fileout = open(argv[argc -1], O_CLOEXEC | O_CREAT | O_WRONLY | O_APPEND, 0777);
+			}
 			else
 				{
-					printf("MULT CMD\n");
-					//pipex avc plusier cmd
-				} 
+					pb.filein = open(argv[1], O_RDONLY);
+					pb.fileout = open(argv[argc -1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+					dup2(pb.filein, STDIN_FILENO);
+				}
+			while (i < argc - 2)
+				create_proc(&pb, &argv[i++], envp);
+			dup2(pb.fileout, STDOUT_FILENO);
+			child_bonus(&pb, &argv[argc -2], envp); 
 		}
-
 	return (0);
 }

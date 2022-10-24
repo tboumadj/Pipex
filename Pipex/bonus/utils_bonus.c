@@ -6,18 +6,74 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:07:37 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/23 20:05:53 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/24 17:05:48 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
+
+void	child_bonus(t_pipexb *pb, char **argv, char **envp)
+{
+	pb->cmd = ft_split(argv[2], ' ');
+	pb->cmd_path = get_path_bonus(pb, pb->cmd[0], envp);
+	if (!pb->cmd_path)
+	{
+		free_process(pb->cmd);
+		ft_close_err("ERROR\n");
+	}
+	execve(pb->cmd_path, pb->cmd, envp);
+}
+
+void	create_proc(t_pipexb *pb, char **argv, char **envp)
+{
+	pid_t	pid;
+
+	if(pipe(pb->fd) == -1)
+		ft_close_err("ERROR PIPE\n");
+	pid = fork();
+	if (pid == -1)
+		ft_close_err("ERROR\n");
+	if (pid == 0)
+	{
+		waitpid(-1, NULL, 0);
+		dup2(pb->fd[0], STDIN_FILENO);
+		close(pb->fd[1]);
+	}
+	else
+	{
+		dup2(pb->fd[1], STDOUT_FILENO);
+		close(pb->fd[0]);
+		child_bonus(pb, argv, envp);
+	}
+
+}
+
+void	road_hd(t_pipexb *pb, char *cmd, char **envp)
+{
+	pid_t	pid;
+
+	if (pipe(pb->fd) == -1)
+		ft_close_err("ERROR PIPE\n");
+	pid = fork();
+	if (pid == -1)
+		ft_close_err("ERROR\n");
+	if (pid == 0)
+	{
+		waitpid(-1, NULL, 0);
+		dup2(pb->fd[0], STDIN_FILENO);
+		close(pb->fd[1]);
+	}
+	here_doc(pb, cmd);
+}
 
 void	here_doc(t_pipexb *pb, char *cmd)
 {
 	size_t	i;
 	char	*tmp;
 
+	//printf("%s\n", cmd);
 	i = ft_strchr(cmd, 0);
+	//printf("%s\n", &cmd[i]);
 	while(1)
 	{
 		write(1, "boumadj pipex - heredoc> ", 25);
@@ -28,7 +84,7 @@ void	here_doc(t_pipexb *pb, char *cmd)
 			close(pb->fd[1]);
 			exit(EXIT_FAILURE);
 		}
-		if (tmp[i] == '\n' && cmd && !strncmp(tmp, cmd, i))
+		if (tmp[i] == '\n' && cmd && ft_strncmp(tmp, cmd, i) == 0)
 		{
 			close(pb->fd[0]);
 			close(pb->fd[1]);
@@ -41,16 +97,16 @@ void	here_doc(t_pipexb *pb, char *cmd)
 	return ;
 }
 
-int		check_arg(char *argv1, t_pipexb *bonus)
+int		check_arg(char *argv1, t_pipexb *pb)
 {
 	if (argv1 && (ft_strncmp(argv1, "here_doc", 9) == 0))
 	{
-		bonus->hd_count = 1;
+		pb->hd_count = 1;
 		return(1);
 	}
 	else
 	{
-		bonus->hd_count = 0;
+		pb->hd_count = 0;
 		return(0);
 	}
 }

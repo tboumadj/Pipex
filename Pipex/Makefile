@@ -6,7 +6,7 @@
 #    By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 17:26:41 by tboumadj          #+#    #+#              #
-#    Updated: 2022/10/23 18:28:59 by tboumadj         ###   ########.fr        #
+#    Updated: 2022/10/24 17:03:48 by tboumadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ OBJS = $(SRCS:.c=.o)
 SRCS_BONUS = bonus/main_bonus.c \
 			bonus/utils_bonus.c \
 			bonus/utils_pipex.c \
-			bonus/close_pipex.c
+			bonus/close_pipex.c \
+			bonus/path_bonus.c
 OBJS_S = $(SRCS_BONUS:.c=.o)
 
 #COULEURS
