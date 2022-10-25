@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 06:33:01 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/25 16:03:10 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:23:49 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_pipexb
 	char	**cmd;
 	char	*cmd_path;
 	char	**paths;
+	int		counter;
 }		t_pipexb;
 
 //-----------------PIPEX------------------//

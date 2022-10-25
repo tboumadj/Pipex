@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 06:32:27 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/25 17:05:22 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:30:59 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int		main(int argc, char **argv, char **envp)
 	int 		i;
 
 	i = 2;
+	pb.counter = 0;
 	if (argc < 5)
 		ft_close_err("TOO FEW ARGUMENT\n");
 	if ((check_arg(argv[1], &pb) == 0) && argc == 5)

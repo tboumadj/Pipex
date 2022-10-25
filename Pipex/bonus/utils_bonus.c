@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:07:37 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/25 17:13:13 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:31:00 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	create_proc(t_pipexb *pb, char *argv, char **envp)
 {
 	pid_t	pid;
 
+	pb->counter++;
+	printf("counter = %d\n", pb->counter);
 	if(pipe(pb->fd) == -1)
 		ft_close_err("ERROR PIPE\n");
 	pid = fork();
@@ -38,9 +40,11 @@ void	create_proc(t_pipexb *pb, char *argv, char **envp)
 		waitpid(-1, NULL, 0);
 		dup2(pb->fd[0], STDIN_FILENO);
 		close(pb->fd[1]);
+		printf("if = ok\n");
 	}
 	else
 	{
+		printf("else = ok\n");
 		dup2(pb->fd[1], STDOUT_FILENO);
 		close(pb->fd[0]);
 		child_bonus(pb, argv, envp);
@@ -62,9 +66,13 @@ void	road_hd(t_pipexb *pb, char *cmd, char **envp)
 		waitpid(-1, NULL, 0);
 		dup2(pb->fd[0], STDIN_FILENO);
 		close(pb->fd[1]);
+		printf("road if = ok\n");
 	}
 	else
+	{
+		printf("road else = ok\n");
 		here_doc(pb, cmd);
+	}
 }
 
 void	here_doc(t_pipexb *pb, char *cmd)
