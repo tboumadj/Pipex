@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:07:37 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/25 16:03:46 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:13:13 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ void	road_hd(t_pipexb *pb, char *cmd, char **envp)
 		dup2(pb->fd[0], STDIN_FILENO);
 		close(pb->fd[1]);
 	}
-	here_doc(pb, cmd);
+	else
+		here_doc(pb, cmd);
 }
 
 void	here_doc(t_pipexb *pb, char *cmd)
@@ -92,6 +93,7 @@ void	here_doc(t_pipexb *pb, char *cmd)
 			exit(EXIT_SUCCESS);
 		}
 		ft_putstr_fd(tmp, pb->fd[1]);
+		//printf("tmp = %s\n", tmp);
 		free(tmp);
 		tmp = 0;
 	}

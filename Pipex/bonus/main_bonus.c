@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 06:32:27 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/25 16:03:28 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:05:22 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		main(int argc, char **argv, char **envp)
 			if (pb.hd_count > 0)
 			{
 				road_hd(&pb, argv[2], envp);
-				pb.fileout = open(argv[argc -1], O_CLOEXEC | O_CREAT | O_WRONLY | O_APPEND, 0777);
+				pb.fileout = open(argv[argc -1],  O_WRONLY | O_CREAT | O_APPEND, 0777);
 			}
 			else
 				{
@@ -71,9 +71,7 @@ int		main(int argc, char **argv, char **envp)
 			while (i < argc - 2)
 				create_proc(&pb, argv[++i], envp);
 			dup2(pb.fileout, STDOUT_FILENO);
-			printf("SUCCES!\n"); 
 			child_bonus(&pb, argv[argc -2], envp);
-			printf("SUCCES!\n"); 
 		}
 	return (0);
 }
