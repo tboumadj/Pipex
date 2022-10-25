@@ -6,12 +6,12 @@
 #    By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 17:26:41 by tboumadj          #+#    #+#              #
-#    Updated: 2022/10/24 17:03:48 by tboumadj         ###   ########.fr        #
+#    Updated: 2022/10/25 15:14:00 by tboumadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #FLAG
-NAME 	=   Pipex
+NAME 	=   pipex
 CC 		=   gcc
 FLAGS 	=   -Wall -Wextra -Werror
 RM 		=   rm -f
@@ -44,14 +44,14 @@ _GREEN  =   $'\x1b[32m
 $(NAME): $(OBJS)
 		@echo "$(_RED)Compilation libft.a en cours...$(_END)"
 		$(MAKE) -C libft/
-	 	$(CC) $(FLAGS) $(OBJS) libft/libft.a -o $(NAME) 
+	 	$(CC) $(FLAGS) $(OBJS) libft/libft.a -o $(NAME) $(CHECK)
 		@echo "$(_RED)Compilation de Pipex en cours...$(_END)"
 		@echo "$(_GREEN)$(_BOLD)Fin de la compilation!$(_END)"
 
 bonus :  $(OBJS_S)
 		@echo "$(_RED)Compilation libft.a en cours...$(_END)"
 		$(MAKE) -C libft/
-	 	$(CC) $(FLAGS) $(OBJS_S) libft/libft.a -o $(NAME) 
+	 	$(CC) $(FLAGS) $(OBJS_S) libft/libft.a -o $(NAME) $(CHECK)
 		@echo "$(_RED)Compilation de Bonus - Pipex en cours...$(_END)"
 		@echo "$(_GREEN)$(_BOLD)Fin de la compilation!$(_END)"
 

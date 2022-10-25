@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 06:33:01 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/24 17:02:51 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/25 16:03:10 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	free_finish(t_pipex *pipex);
 int		check_arg(char *argv1, t_pipexb *pb);
 void	here_doc(t_pipexb *pb, char *cmd);
 void	road_hd(t_pipexb *pb, char *cmd, char **envp);
-void	create_proc(t_pipexb *pb, char **argv, char **envp);
-void	child_bonus(t_pipexb *pb, char **argv, char **envp);
+void	create_proc(t_pipexb *pb, char *argv, char **envp);
+void	child_bonus(t_pipexb *pb, char *argv, char **envp);
 void    *get_path_bonus(t_pipexb *pipex, char *cmd, char **envp);
 void	*get_cmd_bonus(t_pipexb *pipex, char *cmd);
 

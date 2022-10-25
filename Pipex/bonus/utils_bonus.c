@@ -6,15 +6,15 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:07:37 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/24 17:05:48 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/25 16:03:46 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
 
-void	child_bonus(t_pipexb *pb, char **argv, char **envp)
+void	child_bonus(t_pipexb *pb, char *argv, char **envp)
 {
-	pb->cmd = ft_split(argv[2], ' ');
+	pb->cmd = ft_split(argv, ' ');
 	pb->cmd_path = get_path_bonus(pb, pb->cmd[0], envp);
 	if (!pb->cmd_path)
 	{
@@ -24,7 +24,7 @@ void	child_bonus(t_pipexb *pb, char **argv, char **envp)
 	execve(pb->cmd_path, pb->cmd, envp);
 }
 
-void	create_proc(t_pipexb *pb, char **argv, char **envp)
+void	create_proc(t_pipexb *pb, char *argv, char **envp)
 {
 	pid_t	pid;
 
@@ -78,6 +78,7 @@ void	here_doc(t_pipexb *pb, char *cmd)
 	{
 		write(1, "boumadj pipex - heredoc> ", 25);
 		tmp = get_next_line(STDIN_FILENO);
+		//printf("tmp = %s\n", tmp);
 		if (!tmp)
 		{
 			close(pb->fd[0]);

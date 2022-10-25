@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 06:32:27 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/24 17:08:37 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/25 16:03:28 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,11 @@ int		main(int argc, char **argv, char **envp)
 					dup2(pb.filein, STDIN_FILENO);
 				}
 			while (i < argc - 2)
-				create_proc(&pb, &argv[i++], envp);
+				create_proc(&pb, argv[++i], envp);
 			dup2(pb.fileout, STDOUT_FILENO);
-			child_bonus(&pb, &argv[argc -2], envp); 
+			printf("SUCCES!\n"); 
+			child_bonus(&pb, argv[argc -2], envp);
+			printf("SUCCES!\n"); 
 		}
 	return (0);
 }
