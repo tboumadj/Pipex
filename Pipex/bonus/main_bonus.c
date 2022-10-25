@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 06:32:27 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/25 17:30:59 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:34:43 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int pipex_main(int argc, char **argv, char **envp)
 	close(pipex.fd[1]);
 	waitpid(pipex.pid2, NULL, 0);
 	//free_finish(&pipex);
-	printf("SUCCES!\n");
+	printf("SUCCES!\n");//------------TMP
 	return(0);
 }
 
@@ -51,7 +51,7 @@ int		main(int argc, char **argv, char **envp)
 	int 		i;
 
 	i = 2;
-	pb.counter = 0;
+	pb.counter = 0;//--------------TMP
 	if (argc < 5)
 		ft_close_err("TOO FEW ARGUMENT\n");
 	if ((check_arg(argv[1], &pb) == 0) && argc == 5)
