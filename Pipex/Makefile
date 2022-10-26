@@ -6,14 +6,14 @@
 #    By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 17:26:41 by tboumadj          #+#    #+#              #
-#    Updated: 2022/10/25 15:14:00 by tboumadj         ###   ########.fr        #
+#    Updated: 2022/10/26 13:46:01 by tboumadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #FLAG
 NAME 	=   pipex
 CC 		=   gcc
-FLAGS 	=   -Wall -Wextra -Werror
+FLAGS 	=   -Wall -Wextra -Werror -g
 RM 		=   rm -f
 CHECK = -fsanitize=address
 

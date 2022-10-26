@@ -6,21 +6,15 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 17:26:48 by tboumadj          #+#    #+#             */
-/*   Updated: 2022/10/25 17:35:18 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:15:17 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
 
-void	ft_child(t_pipex *pipex,char **argv, char **envp)
+void	ft_child(t_pipex *pipex, char **argv, char **envp)
 {	
-	//int i = 0;
-	pipex->cmd = ft_split(argv[2], ' '); //malloc!
-	/*while (pipex->cmd[i])
-	{
-		printf("cmd %d = %s\n", i, pipex->cmd[i]);
-		i++;
-	}*/
+	pipex->cmd = ft_split(argv[2], ' ');
 	dup2(pipex->fd[1], STDOUT_FILENO);
 	dup2(pipex->filein, STDIN_FILENO);
 	close(pipex->fd[0]);
@@ -30,8 +24,8 @@ void	ft_child(t_pipex *pipex,char **argv, char **envp)
 		free_process(pipex->cmd);
 		ft_close_err("ERROR\n");
 	}
-	execve(pipex->cmd_path, pipex->cmd, envp);
-	//verifier avec if si commande possible sinon BUG
+	if (execve(pipex->cmd_path, pipex->cmd, envp) == -1)
+		ft_close_err("error cmd\n");
 }
 
 void	ft_parent(t_pipex *pipex, char **argv, char **envp)
@@ -46,11 +40,11 @@ void	ft_parent(t_pipex *pipex, char **argv, char **envp)
 		free_process(pipex->cmd);
 		ft_close_err("ERROR\n");
 	}
-	execve(pipex->cmd_path, pipex->cmd, envp);
-	//verifier avec if si commande possible sinon BUG
+	if (execve(pipex->cmd_path, pipex->cmd, envp) == -1)
+		ft_close_err("error cmd\n");
 }
 
-void    *get_path(t_pipex *pipex, char *cmd, char **envp)
+void	*get_path(t_pipex *pipex, char *cmd, char **envp)
 {
 	char	*envp_path;
 	char	*cmd_path;
@@ -62,12 +56,12 @@ void    *get_path(t_pipex *pipex, char *cmd, char **envp)
 		envp_path = ft_strnstr(envp[i], "PATH", 4);
 		if (envp_path)
 		{
-			envp_path = ft_substr(envp_path, 4, 777); //malloc!
-			break;
+			envp_path = ft_substr(envp_path, 4, 777);
+			break ;
 		}
 		i++;
 	}
-	pipex->paths = ft_split(envp_path, ':'); //malloc!
+	pipex->paths = ft_split(envp_path, ':');
 	free(envp_path);
 	cmd_path = get_cmd(pipex, cmd);
 	return (cmd_path);
@@ -75,23 +69,23 @@ void    *get_path(t_pipex *pipex, char *cmd, char **envp)
 
 void	*get_cmd(t_pipex *pipex, char *cmd)
 {
-	int	i;
+	int		i;
 	char	*cmd_path;
-	
+
 	i = 0;
-	while(pipex->paths[i])
+	while (pipex->paths[i])
 	{
-		pipex->paths[i] = ft_strjoin(pipex->paths[i], "/"); //malloc!
+		pipex->paths[i] = ft_strjoin(pipex->paths[i], "/");
 		i++;
 	}
 	i = 0;
 	while (pipex->paths[i])
 	{
-		cmd_path = ft_strjoin(pipex->paths[i], cmd); //malloc!
+		cmd_path = ft_strjoin(pipex->paths[i], cmd);
 		if (access(cmd_path, F_OK | X_OK) == 0)
 			return (cmd_path);
 		free(cmd_path);
 		i++;
 	}
-	return(cmd_path);
+	return (cmd_path);
 }

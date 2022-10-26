@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
+/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 06:52:52 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/21 06:54:27 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/10/26 10:08:44 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

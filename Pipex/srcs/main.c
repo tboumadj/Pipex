@@ -6,21 +6,15 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:49:33 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/24 16:52:57 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:18:45 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
 void	ft_child(t_pipex *pipex, char **argv, char **envp)
-{	
-	//int i = 0;
-	pipex->cmd = ft_split(argv[2], ' '); //malloc!
-	/*while (pipex->cmd[i])
-	{
-		printf("cmd %d = %s\n", i, pipex->cmd[i]);
-		i++;
-	}*/
+{
+	pipex->cmd = ft_split(argv[2], ' ');
 	dup2(pipex->fd[1], STDOUT_FILENO);
 	dup2(pipex->filein, STDIN_FILENO);
 	close(pipex->fd[0]);
@@ -30,8 +24,8 @@ void	ft_child(t_pipex *pipex, char **argv, char **envp)
 		free_process(pipex->cmd);
 		ft_close_err("ERROR\n");
 	}
-	execve(pipex->cmd_path, pipex->cmd, envp);
-	//verifier avec if si commande possible sinon BUG
+	if (execve(pipex->cmd_path, pipex->cmd, envp) == -1)
+		ft_close_err("error cmd\n");
 }
 
 void	ft_parent(t_pipex *pipex, char **argv, char **envp)
@@ -46,16 +40,16 @@ void	ft_parent(t_pipex *pipex, char **argv, char **envp)
 		free_process(pipex->cmd);
 		ft_close_err("ERROR\n");
 	}
-	execve(pipex->cmd_path, pipex->cmd, envp);
-	//verifier avec if si commande possible sinon BUG
+	if (execve(pipex->cmd_path, pipex->cmd, envp) == -1)
+		ft_close_err("error cmd\n");
 }
 
-int main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
 	t_pipex	pipex;
 
-	if (argc < 5)
-		ft_close_err("TOO FEW ARGUMENT\n");
+	if (argc != 5)
+		ft_close_err("ERROR ARGUMENT\n");
 	pipex.filein = open(argv[1], O_RDONLY);
 	if (pipex.filein == -1)
 		ft_close_err("ERROR WITH INFILE\n");
@@ -65,20 +59,13 @@ int main(int argc, char **argv, char **envp)
 	if (pipe(pipex.fd) == -1)
 		ft_close_err("ERROR PIPE\n");
 	pipex.pid1 = fork();
-	if (pipex.pid1 == -1)
-		ft_close_err("ERROR\n");
 	if (pipex.pid1 == 0)
 		ft_child(&pipex, argv, envp);
 	pipex.pid2 = fork();
-	if (pipex.pid2 == -1)
-		ft_close_err("ERROR\n");
 	waitpid(pipex.pid1, NULL, 0);
 	if (pipex.pid2 == 0)
 		ft_parent(&pipex, argv, envp);
-	close(pipex.fd[0]);
-	close(pipex.fd[1]);
+	ft_close_fd(&pipex);
 	waitpid(pipex.pid2, NULL, 0);
-	//free_finish(&pipex);
-	printf("SUCCES!\n");
-	return(0);
+	return (0);
 }

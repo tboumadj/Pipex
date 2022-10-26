@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 17:29:53 by tboumadj          #+#    #+#             */
-/*   Updated: 2022/10/23 19:13:33 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/26 10:09:52 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define BUFFER_SIZE 42
 
 //----------------LIBFT FUNC-----------------//
-size_t  ft_strlen(const char *str);
+size_t	ft_strlen(const char *str);
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strnstr(const char *s1, const char *s2, size_t len);
