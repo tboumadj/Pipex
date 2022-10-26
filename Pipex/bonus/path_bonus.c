@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:59:38 by tboumadj          #+#    #+#             */
-/*   Updated: 2022/10/26 15:24:13 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:22:10 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,20 @@ void	*get_cmd_bonus(t_pipexb *pipex, char *cmd)
 void	ft_else(t_pipexb *pb, char *argv1, char *lastargv)
 {
 	pb->filein = open(argv1, O_RDONLY);
+	if (pb->filein == -1)
+		ft_close_err("ERROR WITH INFILE\n");
 	pb->fileout = open(lastargv, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	if (pb->fileout == -1)
+		ft_close_err("ERROR WITH OUTFILE\n");
 	dup2(pb->filein, STDIN_FILENO);
+}
+
+void	free_process(char **tmp)
+{
+	int	i;
+
+	i = -1;
+	while (tmp[++i])
+		free(tmp[i]);
+	free(tmp);
 }

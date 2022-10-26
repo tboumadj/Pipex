@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 06:32:27 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/26 15:25:49 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:14:22 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int argc, char **argv, char **envp)
 	t_pipexb	pb;
 	int			i;
 
-	i = 3;
+	i = 2;
 	if (argc < 5)
 		ft_close_err("TOO FEW ARGUMENT\n");
 	if ((check_arg(argv[1], &pb) == 0) && argc == 5)

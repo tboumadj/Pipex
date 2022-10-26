@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:07:37 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/26 15:15:08 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:16:24 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	child_bonus(t_pipexb *pb, char *argv, char **envp)
 		ft_close_err("ERROR\n");
 	}
 	if (execve(pb->cmd_path, pb->cmd, envp) == -1)
-		ft_close_err("error cmd\n");
+		ft_close_err_exec_bon(pb->cmd[0], pb);
 }
 
 void	create_proc(t_pipexb *pb, char *argv, char **envp)

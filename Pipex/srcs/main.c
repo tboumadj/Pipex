@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:49:33 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/26 15:18:45 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:17:23 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_child(t_pipex *pipex, char **argv, char **envp)
 		ft_close_err("ERROR\n");
 	}
 	if (execve(pipex->cmd_path, pipex->cmd, envp) == -1)
-		ft_close_err("error cmd\n");
+		ft_close_err_exec(pipex->cmd[0], pipex);
 }
 
 void	ft_parent(t_pipex *pipex, char **argv, char **envp)
@@ -41,7 +41,7 @@ void	ft_parent(t_pipex *pipex, char **argv, char **envp)
 		ft_close_err("ERROR\n");
 	}
 	if (execve(pipex->cmd_path, pipex->cmd, envp) == -1)
-		ft_close_err("error cmd\n");
+		ft_close_err_exec(pipex->cmd[0], pipex);
 }
 
 int	main(int argc, char **argv, char **envp)
