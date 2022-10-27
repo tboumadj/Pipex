@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:07:37 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/27 11:16:36 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/27 14:43:50 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ void	create_proc(t_pipexb *pb, char *argv, char **envp)
 	pid = fork();
 	if (pid == -1)
 		ft_close_err_bn("ERROR\n", pb);
-	if (pid == 0)
+	if (pid)
 	{
-		waitpid(-1, NULL, 0);
+		waitpid(0, NULL, 0);
 		dup2(pb->fd[0], STDIN_FILENO);
 		close(pb->fd[1]);
 	}
-	else
+	else if (pid == 0)
 	{
 		dup2(pb->fd[1], STDOUT_FILENO);
 		close(pb->fd[0]);
@@ -57,13 +57,13 @@ void	road_hd(t_pipexb *pb, char *cmd, char **envp)
 	pid = fork();
 	if (pid == -1)
 		ft_close_err_bn("ERROR\n", pb);
-	if (pid == 0)
+	if (pid)
 	{
 		waitpid(-1, NULL, 0);
 		dup2(pb->fd[0], STDIN_FILENO);
 		close(pb->fd[1]);
 	}
-	else
+	else if (pid == 0)
 		here_doc(pb, cmd);
 }
 

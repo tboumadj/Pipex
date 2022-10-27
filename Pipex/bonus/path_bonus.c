@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:59:38 by tboumadj          #+#    #+#             */
-/*   Updated: 2022/10/27 10:43:19 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/27 14:46:36 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_else(t_pipexb *pb, char *argv1, char *lastargv)
 {
 	pb->filein = open(argv1, O_RDONLY);
 	if (pb->filein == -1)
-		ft_close_err("ERROR WITH INFILE\n");
+		ft_close_err("ERROR WITH INFILE");
 	pb->fileout = open(lastargv, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (pb->fileout == -1)
 		ft_close_err("ERROR WITH OUTFILE\n");
