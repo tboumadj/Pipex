@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:07:37 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/27 14:43:50 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/27 15:07:28 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	child_bonus(t_pipexb *pb, char *argv, char **envp)
 	if (!pb->cmd_path)
 	{
 		free_process(pb->cmd);
-		ft_close_err_bn("ERROR\n", pb);
+		ft_close_err_bn("ERROR", pb);
 	}
 	if (execve(pb->cmd_path, pb->cmd, envp) == -1)
 		ft_close_err_exec_bon(pb->cmd[0], pb);
@@ -30,10 +30,10 @@ void	create_proc(t_pipexb *pb, char *argv, char **envp)
 	pid_t	pid;
 
 	if (pipe(pb->fd) == -1)
-		ft_close_err_bn("ERROR PIPE\n", pb);
+		ft_close_err_bn("ERROR PIPE", pb);
 	pid = fork();
 	if (pid == -1)
-		ft_close_err_bn("ERROR\n", pb);
+		ft_close_err_bn("ERROR", pb);
 	if (pid)
 	{
 		waitpid(0, NULL, 0);
@@ -53,10 +53,10 @@ void	road_hd(t_pipexb *pb, char *cmd, char **envp)
 	pid_t	pid;
 
 	if (pipe(pb->fd) == -1)
-		ft_close_err_bn("ERROR PIPE\n", pb);
+		ft_close_err_bn("ERROR PIPE", pb);
 	pid = fork();
 	if (pid == -1)
-		ft_close_err_bn("ERROR\n", pb);
+		ft_close_err_bn("ERROR", pb);
 	if (pid)
 	{
 		waitpid(-1, NULL, 0);

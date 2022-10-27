@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:49:33 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/27 14:23:11 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/27 14:56:45 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_parent(t_pipex *pipex, char **argv, char **envp)
 	if (!pipex->cmd_path)
 	{
 		free_process(pipex->cmd);
-		ft_close_err_nor("ERROR\n", pipex);
+		ft_close_err_nor("ERROR", pipex);
 	}
 	if (execve(pipex->cmd_path, pipex->cmd, envp) == -1)
 		ft_close_err_exec(pipex->cmd[0], pipex);
@@ -49,15 +49,15 @@ int	main(int argc, char **argv, char **envp)
 	t_pipex	pipex;
 
 	if (argc != 5)
-		ft_close_err("ERROR ARGUMENT\n");
+		ft_close_err("ERROR ARGUMENT");
 	pipex.filein = open(argv[1], O_RDONLY);
 	if (pipex.filein == -1)
-		ft_close_err("ERROR WITH INFILE\n");
+		ft_close_err("ERROR WITH INFILE");
 	pipex.fileout = open(argv[argc -1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (pipex.fileout == -1)
-		ft_close_err("ERROR WITH OUTFILE\n");
+		ft_close_err("ERROR WITH OUTFILE");
 	if (pipe(pipex.fd) == -1)
-		ft_close_err_nor("ERROR PIPE\n", &pipex);
+		ft_close_err_nor("ERROR PIPE", &pipex);
 	pipex.pid1 = fork();
 	if (pipex.pid1 == 0)
 		ft_child(&pipex, argv, envp);
