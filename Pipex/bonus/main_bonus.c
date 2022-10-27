@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 06:32:27 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/26 17:14:22 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/27 11:19:21 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	pipex_main(int argc, char **argv, char **envp)
 	if (pipex.fileout == -1)
 		ft_close_err("ERROR WITH OUTFILE\n");
 	if (pipe(pipex.fd) == -1)
-		ft_close_err("ERROR PIPE\n");
+		ft_close_err_nor("ERROR PIPE\n", &pipex);
 	pipex.pid1 = fork();
 	if (pipex.pid1 == 0)
 		ft_child(&pipex, argv, envp);

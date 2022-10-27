@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:49:33 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/26 17:17:23 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/27 10:32:01 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_child(t_pipex *pipex, char **argv, char **envp)
 	if (!pipex->cmd_path)
 	{
 		free_process(pipex->cmd);
-		ft_close_err("ERROR\n");
+		ft_close_err_nor("ERROR\n", pipex);
 	}
 	if (execve(pipex->cmd_path, pipex->cmd, envp) == -1)
 		ft_close_err_exec(pipex->cmd[0], pipex);
@@ -38,7 +38,7 @@ void	ft_parent(t_pipex *pipex, char **argv, char **envp)
 	if (!pipex->cmd_path)
 	{
 		free_process(pipex->cmd);
-		ft_close_err("ERROR\n");
+		ft_close_err_nor("ERROR\n", pipex);
 	}
 	if (execve(pipex->cmd_path, pipex->cmd, envp) == -1)
 		ft_close_err_exec(pipex->cmd[0], pipex);
@@ -57,7 +57,7 @@ int	main(int argc, char **argv, char **envp)
 	if (pipex.fileout == -1)
 		ft_close_err("ERROR WITH OUTFILE\n");
 	if (pipe(pipex.fd) == -1)
-		ft_close_err("ERROR PIPE\n");
+		ft_close_err_nor("ERROR PIPE\n", &pipex);
 	pipex.pid1 = fork();
 	if (pipex.pid1 == 0)
 		ft_child(&pipex, argv, envp);

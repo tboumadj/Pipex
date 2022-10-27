@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:59:38 by tboumadj          #+#    #+#             */
-/*   Updated: 2022/10/26 16:22:10 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/27 10:43:19 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,12 @@ void	free_process(char **tmp)
 	while (tmp[++i])
 		free(tmp[i]);
 	free(tmp);
+}
+
+void	ft_close_err_bn(char *str, t_pipexb *pb)
+{
+	ft_putstr_fd("pipex: ", 2);
+	ft_putendl_fd(str, 2);
+	ft_close_fd_bon(pb);
+	exit(EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:23:50 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/26 16:10:15 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/27 10:31:30 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_pipex
 
 //--------------CLOSE---------------//
 void	ft_close_err(char *str);
+void	ft_close_err_nor(char *str, t_pipex *pipex);
 void	free_process(char **tmp);
 void	ft_close_fd(t_pipex *pipex);
 void	ft_close_err_exec(char *str, t_pipex *pipex);

@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 06:33:01 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/26 16:13:11 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/27 10:32:42 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	ft_child(t_pipex *pipex, char **argv, char **envp);
 void	ft_parent(t_pipex *pipex, char **argv, char **envp);
 void	*get_path(t_pipex *pipex, char *cmd, char **envp);
 void	*get_cmd(t_pipex *pipex, char *cmd);
+void	ft_close_err_nor(char *str, t_pipex *piepx);
 void	ft_close_err(char *str);
 void	free_process(char **tmp);
 void	ft_close_fd(t_pipex *pipex);
@@ -69,5 +70,6 @@ void	*get_cmd_bonus(t_pipexb *pipex, char *cmd);
 void	ft_else(t_pipexb *pb, char *argv1, char *lastargv);
 void	ft_close_err_exec_bon(char *str, t_pipexb *pb);
 void	ft_close_fd_bon(t_pipexb *pb);
+void	ft_close_err_bn(char *str, t_pipexb *pb);
 
 #endif

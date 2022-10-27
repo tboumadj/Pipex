@@ -6,7 +6,7 @@
 #    By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/26 11:42:31 by tboumadj          #+#    #+#              #
-#    Updated: 2022/10/23 19:11:43 by tboumadj         ###   ########.fr        #
+#    Updated: 2022/10/27 10:41:04 by tboumadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCS 		= ft_substr.c \
 			ft_strchr.c \
 			ft_putstr_fd.c \
 			get_next_line.c \
-			get_next_line_utils.c
+			get_next_line_utils.c \
+			ft_putendl_fd.c
 
 
 OBJS	= $(SRCS:%.c=%.o)
